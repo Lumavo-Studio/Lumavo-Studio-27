@@ -4,7 +4,11 @@
   "version": "27.0.0",
   "description": "Lumavo Studio 27 - Videoschnitt, den jeder versteht",
   "main": "main.js",
-  "author": "Lumavo Team",
+  "author": {
+  
+  "Name":"Lumavo Team",
+  "email":"support.lumavostudio@proton.me"},
+
   "license": "CC-BY-ND-4.0",
   "scripts": {
     "start": "electron .",
