@@ -1,0 +1,27 @@
+const { contextBridge, ipcRenderer, webUtils } = require('electron');
+contextBridge.exposeInMainWorld('api', {
+  ext: () => ipcRenderer.invoke('ext'),
+  theme: t => ipcRenderer.invoke('theme', t),
+  dirty: d => ipcRenderer.send('dirty', d),
+  forceClose: () => ipcRenderer.invoke('forceclose'),
+  ask: (m, d, b) => ipcRenderer.invoke('ask', m, d, b),
+  proxy: f => ipcRenderer.invoke('proxy', f),
+  projdir: () => ipcRenderer.invoke('projdir'),
+  openProj: () => ipcRenderer.invoke('openproj'),
+  openExt: () => ipcRenderer.invoke('openext'),
+  about: m => ipcRenderer.invoke('about', m),
+  pick: () => ipcRenderer.invoke('pick'),
+  probe: p => ipcRenderer.invoke('probe', p),
+  pathOf: f => webUtils.getPathForFile(f),
+  save: (d, a) => ipcRenderer.invoke('save', d, a),
+  openat: f => ipcRenderer.invoke('openat', f),
+  autosave: d => ipcRenderer.invoke('autosave', d),
+  autoload: () => ipcRenderer.invoke('autoload'),
+  impfolder: () => ipcRenderer.invoke('impfolder'),
+  wave: (f, d) => ipcRenderer.invoke('wave', f, d),
+  quit: () => ipcRenderer.invoke('quit'),
+  open: () => ipcRenderer.invoke('open'),
+  export: o => ipcRenderer.invoke('export', o),
+  onCmd: f => ipcRenderer.on('cmd', (_, c) => f(c)),
+  onProgress: f => ipcRenderer.on('progress', (_, p) => f(p))
+});

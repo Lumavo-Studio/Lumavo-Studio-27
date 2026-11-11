@@ -1,0 +1,65 @@
+{
+  "name": "lumavo-studio-27",
+  "productName": "Lumavo Studio 27",
+  "version": "27.0.0",
+  "description": "Lumavo Studio 27 - Videoschnitt, den jeder versteht",
+  "main": "main.js",
+  "author": "Lumavo Team",
+  "license": "CC-BY-ND-4.0",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --publish never"
+  },
+  "dependencies": {
+    "ffmpeg-static": "^5.2.0"
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.0.0",
+    "rcedit": "^4.0.1"
+  },
+  "build": {
+    "appId": "app.lumavo.studio27",
+    "productName": "Lumavo Studio 27",
+    "files": [
+      "main.js",
+      "preload.js",
+      "build/icon.png",
+      "src/**",
+      "extensions/**"
+    ],
+    "asarUnpack": [
+      "node_modules/ffmpeg-static/**"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "signAndEditExecutable": false,
+      "icon": "build/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.video",
+      "artifactName": "Lumavo-Studio-27-${arch}.${ext}",
+      "icon": "build/icon.png"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "AudioVideo"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "Lumavo-Studio-27-Setup-${arch}.${ext}"
+    },
+    "portable": {
+      "artifactName": "Lumavo-Studio-27-Portable-${arch}.${ext}"
+    },
+    "afterPack": "./afterPack.js"
+  }
+}

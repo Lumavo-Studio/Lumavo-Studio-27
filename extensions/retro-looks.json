@@ -1,0 +1,4 @@
+{ "name": "Retro-Looks", "version": "1.0",
+  "effects": [
+    { "id": "vintage", "label": "Vintage", "filter": "curves=preset=vintage", "css": "sepia(.6) contrast(1.1)" },
+    { "id": "grain", "label": "Filmkorn", "filter": "noise=alls=18:allf=t", "css": "contrast(1.05)" } ] }
